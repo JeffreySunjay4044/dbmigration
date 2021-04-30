@@ -1,0 +1,18 @@
+# For adding a connector rule
+curl -X PUT \
+  http://localhost:8083/connectors/test-connector/config \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 1e56c144-35b8-4906-9499-86e463ac928d' \
+  -H 'cache-control: no-cache' \
+  -d ' { "connector.class": "io.debezium.connector.mysql.MySqlConnector", "tasks.max": "1", "database.hostname": "mysql", "database.port": "3306", "database.user": "debezium", "database.server.id": "184054", "database.password": "dbz", "database.server.name": "mysql", "database.include.list": "inventory", "database.history.kafka.bootstrap.servers": "kafka:9092", "database.history.kafka.topic": "dbhistory.inventory", "name":"test-connector" }'
+
+
+# for validating the rules to connect
+curl -X PUT \
+  http://localhost:8083/connector-plugins/MySqlConnector/config/validate \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 1e56c144-35b8-4906-9499-86e463ac928d' \
+  -H 'cache-control: no-cache' \
+  -d ' { "connector.class": "io.debezium.connector.mysql.MySqlConnector", "tasks.max": "1", "database.hostname": "mysql", "database.port": "3306", "database.user": "debezium", "database.server.id": "184054", "database.password": "dbz", "database.server.name": "mysql", "database.include.list": "inventory", "database.history.kafka.bootstrap.servers": "kafka:9092", "database.history.kafka.topic": "dbhistory.inventory", "name":"test-connector" }'

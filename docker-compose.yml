@@ -1,0 +1,63 @@
+version: '3.3'
+services:
+  zookeeper:
+    image: debezium/zookeeper:0.8
+    container_name: zookeeper
+    ports:
+     - 2181:2181
+  kafka:
+    image: debezium/kafka:0.8
+    container_name: kafka
+    ports:
+     - 9092:9092
+    depends_on:
+      - zookeeper
+    links:
+     - zookeeper
+    environment:
+     - ZOOKEEPER_CONNECT=zookeeper:2181
+  kafka_manager:
+    image: hlebalbau/kafka-manager:stable
+    container_name: kafka_manager
+    ports:
+      - 9000:9000
+    depends_on:
+      - kafka
+    environment:
+      ZK_HOSTS: "zookeeper:2181"
+      APPLICATION_SECRET: "random-secret"
+  mysql:
+    image: debezium/example-mysql:0.8
+    container_name: mysql
+    ports:
+     - 3306:3306
+    environment:
+     - MYSQL_ROOT_PASSWORD=debezium
+     - MYSQL_USER=debezium
+     - MYSQL_DATABASE=inventory
+     - MYSQL_PASSWORD=dbz
+    volumes:
+      - mysql-db:/var/lib/mysql
+  connect:
+    image: debezium/connect:0.8
+    container_name: connect
+    ports:
+     - 8083:8083
+    depends_on:
+      - mysql
+      - kafka
+    volumes:
+     - mysql-connector:/kafka/connect/kafka-connect-mysql/
+    links:
+     - kafka
+     - mysql
+    environment:
+     - BOOTSTRAP_SERVERS=kafka:9092
+     - GROUP_ID=1
+     - CONFIG_STORAGE_TOPIC=my_connect_configs
+     - OFFSET_STORAGE_TOPIC=my_connect_offsets
+volumes:
+  mysql-db:
+  mysql-connector:
+
+
