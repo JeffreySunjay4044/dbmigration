@@ -56,8 +56,28 @@ services:
      - GROUP_ID=1
      - CONFIG_STORAGE_TOPIC=my_connect_configs
      - OFFSET_STORAGE_TOPIC=my_connect_offsets
+  redshift:
+    image: guildeducation/docker-amazon-redshift
+    container_name: redshift
+    ports:
+      - 5439:5439
+    depends_on:
+      - mysql
+      - kafka
+    volumes:
+      - redshift:/var/lib/postgresql/data
+    links:
+      - kafka
+      - mysql
+    environment:
+      - POSTGRES_PASSWORD=debezium
+  dbmigration:
+    build: .
+    container_name: dbmigration
+    ports:
+     - 9097:9097
 volumes:
   mysql-db:
   mysql-connector:
-
-
+  ssh-keys:
+  redshift:

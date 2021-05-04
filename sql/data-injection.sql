@@ -103,3 +103,13 @@ VALUES (default, '2016-01-16', 1001, 1, 102),
        (default, '2016-01-17', 1002, 2, 105),
        (default, '2016-02-19', 1002, 2, 106),
        (default, '2016-02-21', 1003, 1, 107);
+
+
+
+
+CREATE TABLE products (
+  id INTEGER ,
+  name VARCHAR(255),
+  description VARCHAR(512),
+  weight FLOAT
+);
