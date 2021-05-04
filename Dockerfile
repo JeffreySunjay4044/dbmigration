@@ -14,9 +14,6 @@ RUN pip3 install pipenv
 RUN pip install --upgrade pip
 RUN set -ex && pipenv install --deploy --system
 
-
 COPY ./app   ./
-COPY ./crt/server.key /var/lib/postgresql/server.key
-COPY ./crt/server.crt /var/lib/postgresql/server.crt
 
 CMD ["python", "-u", "main.py", "run"]

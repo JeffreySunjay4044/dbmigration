@@ -12,12 +12,14 @@ class ConnInfo(NamedTuple):
     password: str
     host: str
     database: str
+    ssl: bool
 
 def build_conn_info(
     user: Optional[str] = None,
     password: Optional[str] = None,
     host: Optional[str] = None,
     database: Optional[str] = None,
+    ssl: bool = False,
 ) -> ConnInfo:
     """
     Parse arguments and return connection info for Redshift
@@ -27,6 +29,7 @@ def build_conn_info(
         password=password or os.environ["ANALYTICS_DB_PASSWORD"],
         host=host or os.environ["ANALYTICS_DB_HOST"],
         database=database or os.environ["ANALYTICS_DB_NAME"],
+        ssl=ssl
     )
 
 
@@ -40,7 +43,8 @@ class RedshiftConnection:
             host=self.conn_info.host,
             database=self.conn_info.database,
             user=self.conn_info.user,
-            password=self.conn_info.password
+            password=self.conn_info.password,
+            ssl=self.conn_info.ssl
         )
         return conn
 def push_to_redshift(db, sql_query):
@@ -48,14 +52,16 @@ def push_to_redshift(db, sql_query):
         host='redshift',
         database=db,
         user='postgres',
-        password='debezium'
+        password='debezium',
+        ssl=False
+
     )
     print(f"conn info is {conn_info}")
     connection = RedshiftConnection(conn_info).getClient()
     cursor: redshift_connector.Cursor = connection.cursor()
     cursor.execute(sql_query)
     result: tuple = cursor.fetchall()
-    print(result)
+    print(f"Result after insert {result}")
     return result
 
 if __name__ == '__main__':
@@ -132,12 +138,29 @@ if __name__ == '__main__':
                         if before is None:
                             if after is not None:
                                 after_keys = after.keys()
+                                after_keys = ",".join(after_keys)
+                                print(f"Checking format for keys {after_keys}")
                                 # if type(after.keys()) is not str:
                                 #     after_keys = json.dumps(after.keys())
                                 val_list = after.values()
+                                count = 0
+                                converted_values= ""
+                                for val in val_list:
+                                    if count > 0:
+                                        converted_values +=','
+                                    elif count == 0 :
+                                        count = 1
+                                    if type(val) is not str:
+                                        val = str(val)
+                                    elif type(val) is str:
+                                        val = "'"+val+"'"
+                                    converted_values += val
+
+
+                                print(f"Checking format for values {converted_values}")
                                 # if type(after.values()) is not str:
                                 #     val_list = json.dumps(after.values())
-                                sql_query = f"INSERT INTO {table} ( {after_keys} ) values ({val_list})"
+                                sql_query = f"INSERT INTO {table} VALUES ({converted_values})"
                                 print(f"sql query is {sql_query}")
                                 result = push_to_redshift(db, sql_query)
                         elif after is None:

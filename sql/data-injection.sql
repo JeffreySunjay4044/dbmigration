@@ -113,3 +113,4 @@ CREATE TABLE products (
   description VARCHAR(512),
   weight FLOAT
 );
+

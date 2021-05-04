@@ -57,7 +57,7 @@ services:
      - CONFIG_STORAGE_TOPIC=my_connect_configs
      - OFFSET_STORAGE_TOPIC=my_connect_offsets
   redshift:
-    image: guildeducation/docker-amazon-redshift
+    image: postgres:latest
     container_name: redshift
     ports:
       - 5439:5439
@@ -66,6 +66,8 @@ services:
       - kafka
     volumes:
       - redshift:/var/lib/postgresql/data
+      - ./crt/server.key:/var/ssl/server.key
+      - ./crt/server.crt:/var/ssl/server.crt
     links:
       - kafka
       - mysql
