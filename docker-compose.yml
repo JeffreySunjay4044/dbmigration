@@ -57,21 +57,23 @@ services:
      - CONFIG_STORAGE_TOPIC=my_connect_configs
      - OFFSET_STORAGE_TOPIC=my_connect_offsets
   redshift:
-    image: postgres:latest
+    image: foundryai/postgres8
     container_name: redshift
-    ports:
-      - 5439:5439
     depends_on:
       - mysql
       - kafka
+    ports:
+      - 5432:5432
     volumes:
-      - redshift:/var/lib/postgresql/data
-      - ./crt/server.key:/var/ssl/server.key
+      - ./data:/usr/local/psql/data
+      - ./crt/server.key:/vbaar/ssl/server.key
       - ./crt/server.crt:/var/ssl/server.crt
     links:
       - kafka
       - mysql
     environment:
+      - POSTGRES_DATABASE=inventory
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=debezium
   dbmigration:
     build: .

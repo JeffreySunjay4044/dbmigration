@@ -7,6 +7,7 @@ name = "pypi"
 redshift-connector = "*"
 singleton-decorator = "*"
 confluent-kafka = "*"
+postgres = "*"
 
 [dev-packages]
 

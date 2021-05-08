@@ -3,6 +3,7 @@ import sys
 import os
 from typing import NamedTuple, Optional
 import redshift_connector
+import psycopg2
 from singleton_decorator import singleton
 from confluent_kafka import Consumer, KafkaException, KafkaError
 
@@ -12,14 +13,12 @@ class ConnInfo(NamedTuple):
     password: str
     host: str
     database: str
-    ssl: bool
 
 def build_conn_info(
     user: Optional[str] = None,
     password: Optional[str] = None,
     host: Optional[str] = None,
-    database: Optional[str] = None,
-    ssl: bool = False,
+    database: Optional[str] = None
 ) -> ConnInfo:
     """
     Parse arguments and return connection info for Redshift
@@ -28,8 +27,7 @@ def build_conn_info(
         user=user or os.environ["ANALYTICS_DB_USER"],
         password=password or os.environ["ANALYTICS_DB_PASSWORD"],
         host=host or os.environ["ANALYTICS_DB_HOST"],
-        database=database or os.environ["ANALYTICS_DB_NAME"],
-        ssl=ssl
+        database=database or os.environ["ANALYTICS_DB_NAME"]
     )
 
 
@@ -39,12 +37,12 @@ class RedshiftConnection:
     def __init__(self, conn_info):
         self.conn_info = conn_info
     def getClient(self):
-        conn = redshift_connector.connect(
+        conn = psycopg2.connect(
             host=self.conn_info.host,
+            port=5432,
             database=self.conn_info.database,
             user=self.conn_info.user,
-            password=self.conn_info.password,
-            ssl=self.conn_info.ssl
+            password=self.conn_info.password
         )
         return conn
 def push_to_redshift(db, sql_query):
@@ -52,9 +50,7 @@ def push_to_redshift(db, sql_query):
         host='redshift',
         database=db,
         user='postgres',
-        password='debezium',
-        ssl=False
-
+        password='debezium'
     )
     print(f"conn info is {conn_info}")
     connection = RedshiftConnection(conn_info).getClient()
@@ -66,10 +62,11 @@ def push_to_redshift(db, sql_query):
 
 if __name__ == '__main__':
     topics = ["mysql.inventory.products"]
+    result = push_to_redshift("inventory", "INSERT INTO products values(122, 'test','test', '12322')")
     # Consumer configuration
     # See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
     conf = {
-        'bootstrap.servers': 'kafka:9092',
+        'bootstrap.servers': 'localhost:9092',
         'group.id': "Mercato_test",
         'session.timeout.ms': 6000,
         'default.topic.config': {'auto.offset.reset': 'smallest'},
@@ -78,12 +75,6 @@ if __name__ == '__main__':
         # 'sasl.username': os.environ['CLOUDKARAFKA_USERNAME'],
         # 'sasl.password': os.environ['CLOUDKARAFKA_PASSWORD']
     }
-    # conn_info = build_conn_info(
-    #     user='postgres',
-    #     password='debezium',
-    #     host='redshift',
-    #     database='inventory'
-    # )
     c = Consumer(**conf)
     c.subscribe(topics)
     try:
@@ -159,19 +150,34 @@ if __name__ == '__main__':
 
                                 print(f"Checking format for values {converted_values}")
                                 # if type(after.values()) is not str:
-                                #     val_list = json.dumps(after.values())
                                 sql_query = f"INSERT INTO {table} VALUES ({converted_values})"
                                 print(f"sql query is {sql_query}")
                                 result = push_to_redshift(db, sql_query)
                         elif after is None:
                             if before is not None:
-                                before_keys = ""
-                                if type(before.keys()) is not str:
-                                    before_keys = json.dumps(before.keys())
-                                val_list = ""
-                                if type(before.values()) is not str:
-                                    val_list = json.dumps(before.values())
-                                sql_query = f"UPDATE {table} ( {before_keys} ) values ({val_list})"
+                                before_keys = before.keys()
+                                before_keys = ",".join(before_keys)
+                                print(f"Checking format for keys {before_keys}")
+                                # if type(after.keys()) is not str:
+                                #     after_keys = json.dumps(after.keys())
+                                val_list = abeforefter.values()
+                                count = 0
+                                converted_values = ""
+                                for val in val_list:
+                                    if count > 0:
+                                        converted_values += ','
+                                    elif count == 0:
+                                        count = 1
+                                    if type(val) is not str:
+                                        val = str(val)
+                                    elif type(val) is str:
+                                        val = "'" + val + "'"
+                                    converted_values += val
+
+                                print(f"Checking format for values {converted_values}")
+                                # if type(after.values()) is not str:
+                                sql_query = f"INSERT INTO {table} VALUES ({converted_values})"
+                                print(f"sql query is {sql_query}")
                                 result = push_to_redshift(db, sql_query)
     except KeyboardInterrupt:
         sys.stderr.write('%% Aborted by user\n')
