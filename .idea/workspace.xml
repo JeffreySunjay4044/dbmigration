@@ -19,20 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/connector/redshift_connection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/connector/stream_connection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/process/msg_processor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/process/query/ddl_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbmigration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbmigration.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Pushed refactored code">
+      <change afterPath="$PROJECT_DIR$/app/state/db/pk_state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/connector/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/connector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/process/msg_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/process/msg_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/process/query/ddl_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/process/query/ddl_creator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +43,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TF_FMT" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -90,6 +84,14 @@
       <option name="presentableId" value="Default" />
       <updated>1620272586158</updated>
     </task>
+    <task id="LOCAL-00001" summary="Pushed refactored code">
+      <created>1620490265398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620490265398</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +104,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Pushed refactored code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pushed refactored code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620406646372">

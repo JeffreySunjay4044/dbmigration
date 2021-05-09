@@ -160,7 +160,7 @@ if __name__ == '__main__':
                                 print(f"Checking format for keys {before_keys}")
                                 # if type(after.keys()) is not str:
                                 #     after_keys = json.dumps(after.keys())
-                                val_list = abeforefter.values()
+                                val_list = before.values()
                                 count = 0
                                 converted_values = ""
                                 for val in val_list:
