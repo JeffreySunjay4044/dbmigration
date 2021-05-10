@@ -27,7 +27,8 @@ services:
       ZK_HOSTS: "zookeeper:2181"
       APPLICATION_SECRET: "random-secret"
   mysql:
-    image: debezium/example-mysql:0.8
+    build:
+      context: debezium-mysql
     container_name: mysql
     ports:
      - 3306:3306
@@ -58,7 +59,8 @@ services:
      - CONFIG_STORAGE_TOPIC=my_connect_configs
      - OFFSET_STORAGE_TOPIC=my_connect_offsets
   redshift:
-    image: debezium/postgres:9.6
+    build:
+      context: debezium-postgres
     container_name: redshift
     depends_on:
       - mysql
