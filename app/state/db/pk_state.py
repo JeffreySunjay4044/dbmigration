@@ -16,7 +16,8 @@ def add_pk_relation(db, table, column):
 
 
 def get_pk_relations(db, table):
-    return pk_key_relations[db][table]
+    s3_poc_record = pull_from_s3()
+    return s3_poc_record[db][table]
 
 
 def pull_from_s3():

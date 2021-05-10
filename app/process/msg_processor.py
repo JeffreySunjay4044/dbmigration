@@ -2,7 +2,7 @@ import json
 import sys
 
 from app.connector import redshift_connection
-from .query import ddl_creator
+from .query import dml_creator
 
 
 def process_message(msg_val):
@@ -36,12 +36,12 @@ def process_message(msg_val):
             print(f"before_value is {before} and after_value is {after}")
             if before is None:
                 if after is not None:
-                    sql_query = ddl_creator.insert_record_query(after, db, table)
+                    sql_query = dml_creator.insert_record_query(after, db, table)
                     result = redshift_connection.push_to_redshift(db, sql_query)
             elif after is None:
                 if before is not None:
-                    sql_query = ddl_creator.delete_record_query(after, db, table)
+                    sql_query = dml_creator.delete_record_query(after, db, table)
                     result = redshift_connection.push_to_redshift(db, sql_query)
             else :
-                sql_query = ddl_creator.update_record_query(after, db, table)
+                sql_query = dml_creator.update_record_query(after, db, table)
                 result = redshift_connection.push_to_redshift(db, sql_query)

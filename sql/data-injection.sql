@@ -24,7 +24,7 @@ CREATE TABLE products (
 ALTER TABLE products AUTO_INCREMENT = 101;
 
 INSERT INTO products
-VALUES (default,"scooter","Small 2-wheel scooter",3.14),
+VALUES (default,"scooter-bike","Small 2-wheel scooter",9.14),
        (default,"car battery","12V car battery",8.1),
        (default,"12-pack drill bits","12-pack of drill bits with sizes ranging from #40 to #3",0.8),
        (default,"hammer","12oz carpenter's hammer",0.75),
@@ -107,10 +107,9 @@ VALUES (default, '2016-01-16', 1001, 1, 102),
 
 
 
-CREATE TABLE products (
-  id INTEGER ,
-  name VARCHAR(255),
-  description VARCHAR(512),
-  weight FLOAT
-);
+CREATE TABLE products ( id INTEGER , name VARCHAR(255), description VARCHAR(512), weight FLOAT);
+
+
+
+
 

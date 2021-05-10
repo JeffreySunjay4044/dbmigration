@@ -1,12 +1,12 @@
 version: '3.3'
 services:
   zookeeper:
-    image: debezium/zookeeper:0.8
+    image: debezium/zookeeper:1.4
     container_name: zookeeper
     ports:
      - 2181:2181
   kafka:
-    image: debezium/kafka:0.8
+    image: debezium/kafka:1.4
     container_name: kafka
     ports:
      - 9092:9092
@@ -39,7 +39,8 @@ services:
     volumes:
       - mysql-db:/var/lib/mysql
   connect:
-    image: debezium/connect:0.8
+    build:
+      context: debezium-jdbc
     container_name: connect
     ports:
      - 8083:8083
@@ -57,7 +58,7 @@ services:
      - CONFIG_STORAGE_TOPIC=my_connect_configs
      - OFFSET_STORAGE_TOPIC=my_connect_offsets
   redshift:
-    image: foundryai/postgres8
+    image: debezium/postgres:9.6
     container_name: redshift
     depends_on:
       - mysql
