@@ -76,11 +76,6 @@ services:
       - POSTGRES_DATABASE=inventory
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=debezium
-  dbmigration:
-    build: .
-    container_name: dbmigration
-    ports:
-     - 9097:9097
 volumes:
   mysql-db:
   mysql-connector:
