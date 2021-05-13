@@ -6,6 +6,8 @@ import redshift_connector
 import psycopg2
 from singleton_decorator import singleton
 from confluent_kafka import Consumer, KafkaException, KafkaError
+from simple_ddl_parser import DDLParser
+from simple_ddl_parser import parse_from_file
 
 class ConnInfo(NamedTuple):
     """ Represents Redshift Connection Information """
@@ -62,6 +64,9 @@ def push_to_redshift(db, sql_query):
 
 if __name__ == '__main__':
     topics = ["mysql.inventory.products"]
+    parse_results = parse_from_file('../debezium-mysql/db-update.sql')
+
+    print(parse_results)
     result = push_to_redshift("inventory", "INSERT INTO products values(122, 'test','test', '12322')")
     # Consumer configuration
     # See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md

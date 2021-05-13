@@ -7,6 +7,7 @@ FROM python:3.7-slim
 # Install parameter-store-exec, which fetches secrets from AWS SSM
 # and sets them as environment variables
 # (see https://github.com/cultureamp/parameter-store-exec)
+
 COPY Pipfile ./Pipfile
 COPY Pipfile.lock ./Pipfile.lock
 

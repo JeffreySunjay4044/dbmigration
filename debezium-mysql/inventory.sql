@@ -14,7 +14,7 @@ GRANT ALL PRIVILEGES ON inventory.* TO 'mysqluser'@'%';
 --# Switch to this database
 USE inventory;
 
-# Create and populate our products using a single insert with many rows
+--# Create and populate our products using a single insert with many rows
 CREATE TABLE IF NOT EXISTS products (
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
@@ -34,7 +34,7 @@ VALUES (default,"scooter","Small 2-wheel scooter",3.14),
        (default,"jacket","water resistent black wind breaker",0.1),
        (default,"spare tire","24 inch spare tire",22.2);
 
-# Create and populate the products on hand using multiple inserts
+--# Create and populate the products on hand using multiple inserts
 CREATE TABLE IF NOT EXISTS products_on_hand (
   product_id INTEGER NOT NULL PRIMARY KEY,
   quantity INTEGER NOT NULL,

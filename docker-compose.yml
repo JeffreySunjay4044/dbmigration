@@ -68,9 +68,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./data:/usr/local/psql/data
-      - ./crt/server.key:/vbaar/ssl/server.key
-      - ./crt/server.crt:/var/ssl/server.crt
+      - redshift:/usr/local/psql/data
     links:
       - kafka
       - mysql
