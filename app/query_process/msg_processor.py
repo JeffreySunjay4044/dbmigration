@@ -1,8 +1,8 @@
 import json
 import sys
 
-from app.connector import redshift_connection
-from .query import dml_creator,ddl_creator
+from connector import redshift_connection
+from query_process.query import dml_creator, ddl_creator
 import re
 
 
@@ -11,7 +11,7 @@ def process_message(msg_val, is_ddl):
                      (msg_val.topic(), msg_val.partition(), msg_val.offset(),
                       str(msg_val.key())))
     print(f"msg.value() is: {msg_val.value()}")
-
+    result = {}
     if msg_val.value() is not None:
         msg_value_dict = json.loads(msg_val.value().decode('utf-8'))
         print(f"msg_value_str is: {msg_value_dict}")
@@ -32,23 +32,25 @@ def process_message(msg_val, is_ddl):
             #   "ddl" : "ALTER TABLE orders ADD COLUMN first_referrer varchar(100)"
             # }
             ddl_query_applied = msg_value_dict["ddl"]
-            database = msg_val["database"]
+            db = "inventory"
             if re.search('CREATE TABLE', ddl_query_applied, re.IGNORECASE):
-                print(f"expected create table scenario : ", {ddl_query_applied})
+                print(f"expected create table scenario : {ddl_query_applied}")
                 # Ignoring these use cases currently as create runs on its own
                 # ddl_query = ddl_creator.create_table_query(database, ddl_query_applied)
                 # result = redshift_connection.push_to_redshift(database, ddl_query)
             elif re.search("ALTER TABLE ", ddl_query_applied, re.IGNORECASE):
-                print(f"expected alter table scenario : ", {ddl_query_applied})
+                print(f"expected alter table scenario : {ddl_query_applied}")
 
                 if re.search("REFERENCES", ddl_query_applied, re.IGNORECASE):
-                    print(f"expected alter table scenario other than column ones : ", {ddl_query_applied})
-                ## Leaving this comment here. Make changes here for handling alter table commands other than drop or create columns
+                    print(f"expected alter table scenario other than column ones :  {ddl_query_applied}")
+## Leaving this comment here. Make changes here for handling alter table commands other than drop or create columns
 
-                else :
-                    print(f"Expected scenario with alter table drop or add columns : ", {ddl_query_applied})
-                    ddl_query = ddl_creator.alter_table_query(database, ddl_query_applied)
-                    result = redshift_connection.push_to_redshift(database, ddl_query)
+                else:
+                    print(f"Expected scenario with alter table drop or add columns : {ddl_query_applied}")
+                    ddl_query = ddl_creator.alter_table_query(db, ddl_query_applied)
+                    result = redshift_connection.push_to_redshift(db, ddl_query, False)
+            else:
+                print(f"Encountered unexpected scenario : {ddl_query_applied}")
 
         elif is_ddl is None:
             payload = msg_value_dict["payload"]
@@ -79,6 +81,7 @@ def process_message(msg_val, is_ddl):
                     if before is not None:
                         sql_query = dml_creator.delete_record_query(after, db, table)
                         result = redshift_connection.push_to_redshift(db, sql_query)
-                else :
+                else:
                     sql_query = dml_creator.update_record_query(after, db, table)
                     result = redshift_connection.push_to_redshift(db, sql_query)
+    return result

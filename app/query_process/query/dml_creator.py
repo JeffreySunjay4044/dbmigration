@@ -1,4 +1,4 @@
-from app.state.db import pk_state
+from state.db import pk_state
 
 
 def insert_record_query(created_row, db, table):

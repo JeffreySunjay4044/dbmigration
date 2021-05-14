@@ -1,9 +1,9 @@
 import os
-from typing import Optional, NamedTuple, Dict
+from typing import Dict
 
 from confluent_kafka import Consumer, KafkaException, KafkaError
 import sys
-from app.query_process import msg_processor
+from query_process import msg_processor
 
 
 # Consumer configuration

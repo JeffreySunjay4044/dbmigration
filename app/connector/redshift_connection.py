@@ -46,7 +46,7 @@ class RedshiftConnection:
         return conn
 
 
-def push_to_redshift(db, sql_query):
+def push_to_redshift(db, sql_query, is_result_needed):
     conn_info = build_conn_info(
         host='redshift',
         database=db,
@@ -54,9 +54,14 @@ def push_to_redshift(db, sql_query):
         password='debezium'
     )
     print(f"conn info is {conn_info}")
-    connection = RedshiftConnection(conn_info).getClient()
+    connection = RedshiftConnection(conn_info).get_client()
     cursor: redshift_connector.Cursor = connection.cursor()
     cursor.execute(sql_query)
-    result: tuple = cursor.fetchall()
-    print(f"Result after insert {result}")
-    return result
+    if is_result_needed is not None:
+        if is_result_needed is True:
+            result: tuple = cursor.fetchall()
+            print(f"Result after insert {result}")
+            return result
+        else:
+            connection.commit()
+
