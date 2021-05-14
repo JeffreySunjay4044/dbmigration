@@ -5,7 +5,7 @@ from confluent_kafka import Consumer, KafkaException, KafkaError
 import sys
 from app.process import msg_processor
 
-topics = ["mysql.inventory.products"]
+
 # Consumer configuration
 # See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
 
@@ -22,7 +22,7 @@ def build_consumer() -> Dict:
         'default.topic.config': {'auto.offset.reset': 'smallest'},
     }
 
-def start_consumer(topics):
+def start_consumer():
     # conf = {
     #     'bootstrap.servers': 'localhost:9092',
     #     'group.id': "mercato_test",
@@ -33,6 +33,8 @@ def start_consumer(topics):
     # # 'sasl.username': os.environ['CLOUDKARAFKA_USERNAME'],
     # # 'sasl.password': os.environ['CLOUDKARAFKA_PASSWORD']
     # }
+    topics = ["dbhistory.inventory"]
+    is_ddl = True
     c = Consumer(build_consumer())
     c.subscribe(topics)
     try:
@@ -52,7 +54,7 @@ def start_consumer(topics):
                     raise KafkaException(msg.error())
             else:
                 # Proper message
-                msg_processor.process_message(msg)
+                msg_processor.process_message(msg, is_ddl)
     except KeyboardInterrupt:
         sys.stderr.write('%% Aborted by user\n')
     # Close down consumer to commit final offsets.

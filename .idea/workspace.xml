@@ -19,13 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Pushed refactored code">
-      <change afterPath="$PROJECT_DIR$/app/state/db/pk_state.py" afterDir="false" />
+    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Deleting unnecessary file and add make file and scripts">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/connector/stream_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connector/stream_connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/process/msg_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/process/msg_processor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/process/query/ddl_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/process/query/ddl_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/useful_scripts.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +45,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TF_FMT" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/debezium-app" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/debezium-app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/debezium-app" />
+      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -91,8 +103,75 @@
       <option name="project" value="LOCAL" />
       <updated>1620490265398</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ddl record and pk state">
+      <created>1620529963077</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1620529963077</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ddl record and pk state">
+      <created>1620530116962</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620530116962</updated>
+    </task>
+    <task id="LOCAL-00004" summary="dml record kafka sink connect">
+      <created>1620620407619</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620620407619</updated>
+    </task>
+    <task id="LOCAL-00005" summary="dml record kafka sink connect">
+      <created>1620620507927</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1620620507928</updated>
+    </task>
+    <task id="LOCAL-00006" summary="modified docker-compose">
+      <created>1620633947012</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620633947013</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added dockerfile and sql files and cnf files for docker-compose local debezium content">
+      <created>1620633982585</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620633982585</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updating README.md files">
+      <created>1620637757787</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620637757787</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Adding requests.http for connector code and update README.md file">
+      <created>1620639017209</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1620639017209</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Deleting unnecessary file and add make file and scripts">
+      <created>1620871564724</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620871564724</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.http" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -104,64 +183,87 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Pushed refactored code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushed refactored code" />
+    <MESSAGE value="ddl record and pk state" />
+    <MESSAGE value="dml record kafka sink connect" />
+    <MESSAGE value="modified docker-compose" />
+    <MESSAGE value="Added dockerfile and sql files and cnf files for docker-compose local debezium content" />
+    <MESSAGE value="Updating README.md files" />
+    <MESSAGE value="Adding requests.http for connector code and update README.md file" />
+    <MESSAGE value="Deleting unnecessary file and add make file and scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleting unnecessary file and add make file and scripts" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620406646372">
+    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620957734811">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1620406646372" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1620387319502">
+    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1620957734811" />
+    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1620958075844">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620387319502" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1620387319499">
+    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620958075844" />
+    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1620958075843">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1620387319499" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1620387319497">
+    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1620958075843" />
+    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1620958075841">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1620387319497" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1620387319501">
+    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1620958075841" />
+    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1620958075843">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1620387319501" />
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1620294422048">
+    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1620958075843" />
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1620958077451">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620294422048" />
-    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1620294422046">
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620958077451" />
+    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1620958077449">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1620294422046" />
-    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1620294422044">
+    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1620958077449" />
+    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1620958077449">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1620294422044" />
-    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1620294422047">
+    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1620958077449" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1620958077450">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1620294422047" />
-    <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1620294420529">
+    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1620958077450" />
+    <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1620817333499">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.800@0.0.1280.800" timestamp="1620294420529" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1620412781536">
+    <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.800@0.0.1280.800" timestamp="1620817333499" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1620530140607">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1620412781536" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1620530140607" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/main.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/process/msg_processor.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
