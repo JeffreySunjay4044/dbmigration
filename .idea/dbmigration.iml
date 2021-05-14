@@ -2,6 +2,8 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/app/connector" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/query_process" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/tf" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>

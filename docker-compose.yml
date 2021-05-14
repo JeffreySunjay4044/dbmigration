@@ -76,6 +76,22 @@ services:
       - POSTGRES_DATABASE=inventory
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=debezium
+  ddlconsumerinventory:
+    build:
+      context: .
+    container_name: dbmigration
+    depends_on:
+      - mysql
+      - kafka
+    ports:
+      - 8089:8089
+    links:
+      - kafka
+      - mysql
+    environment:
+      - BOOTSTRAP_SERVER=kafka:9092
+      - GROUP_ID=mercato-test-2
+      - POSTGRES_PASSWORD=debezium
 volumes:
   mysql-db:
   mysql-connector:

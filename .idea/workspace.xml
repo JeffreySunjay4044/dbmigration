@@ -19,14 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Deleting unnecessary file and add make file and scripts">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Adding ddl query converted and refactored code">
+      <change beforePath="$PROJECT_DIR$/.idea/dbmigration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbmigration.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/connector/stream_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connector/stream_connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/process/msg_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/process/msg_processor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/useful_scripts.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/process/msg_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/msg_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/process/query/ddl_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/query/ddl_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/process/query/dml_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/query/dml_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/deploy_debezium_local.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/deploy_debezium_local.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620871564724</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Adding ddl query converted and refactored code">
+      <created>1620959562455</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1620959562455</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -194,45 +203,46 @@
     <MESSAGE value="Updating README.md files" />
     <MESSAGE value="Adding requests.http for connector code and update README.md file" />
     <MESSAGE value="Deleting unnecessary file and add make file and scripts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleting unnecessary file and add make file and scripts" />
+    <MESSAGE value="Adding ddl query converted and refactored code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding ddl query converted and refactored code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620957734811">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1620957734811" />
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1620958075844">
+    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1620960403685">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620958075844" />
-    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1620958075843">
+    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620960403685" />
+    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1620960403682">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1620958075843" />
-    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1620958075841">
+    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1620960403682" />
+    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1620960403680">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1620958075841" />
-    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1620958075843">
+    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1620960403680" />
+    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1620960403684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1620958075843" />
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1620958077451">
+    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1620960403684" />
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1620960403692">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620958077451" />
-    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1620958077449">
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620960403692" />
+    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1620960403689">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1620958077449" />
-    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1620958077449">
+    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1620960403689" />
+    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1620960403687">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1620958077449" />
-    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1620958077450">
+    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1620960403687" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1620960403690">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1620958077450" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1620960403690" />
     <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1620817333499">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -247,23 +257,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
           <line>56</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/process/msg_processor.py</url>
+          <url>file://$PROJECT_DIR$/app/query_process/msg_processor.py</url>
           <line>9</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/query_process/msg_processor.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

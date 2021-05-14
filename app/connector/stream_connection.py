@@ -3,7 +3,7 @@ from typing import Optional, NamedTuple, Dict
 
 from confluent_kafka import Consumer, KafkaException, KafkaError
 import sys
-from app.process import msg_processor
+from app.query_process import msg_processor
 
 
 # Consumer configuration
@@ -16,8 +16,8 @@ def build_consumer() -> Dict:
     Parse arguments and return connection info for Redshift
     """
     return  {
-        'bootstrap.servers': 'localhost:9092',
-        'group.id': "mercato_test",
+        'bootstrap.servers': os.getenv("BOOTSTRAP_SERVER"),
+        'group.id': os.getenv("GROUP_ID"),
         'session.timeout.ms': 6000,
         'default.topic.config': {'auto.offset.reset': 'smallest'},
     }
