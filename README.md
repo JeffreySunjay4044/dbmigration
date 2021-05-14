@@ -18,9 +18,13 @@ Install docker
 # Docker
 ```
 ## Run Locally
+## Restart all containers
 ```shell script
-docker-compose up.
-Docker compose up brings up all containers 
+
+make purge_restart_docker
+    This deletes existing docker container for all components . It does a cleanup of all images 
+    that was created in the last run and finally brings up all containers.
+
 Once all containers are up and kafka connect is running.
 
 To do for pulling data from mysql to redshift
@@ -29,8 +33,18 @@ To do for pulling data from mysql to redshift
    changes in to kafka-topic. Refer requests/requests.http first 
 2. Use kafka connect api to add a postgres sink which configures kafka-connect to impart the changes in to postgres 
    based on the changes in the kafka-topic. Refer requests/requests.http second
+3. Login to mysql host and try an alter table query , make sure the table that is altered has the sink
+   connector(refer point 2) running on it.
+
+## Restart specific containers
+
+make purge_restart_docker container_name={container_name} : refer from docker-compose.
+    This will restart the docker container with the above container name. It follows the same procedure
+    deleting the old image and container and spins up a new one.
 
 ```
+
+
 ## Architecture diagram
 ```
 https://lucid.app/lucidchart/invitations/accept/inv_43e9b0b5-202e-493d-adb5-d3c8191987ba?viewport_loc=-3%2C-118%2C1292%2C735%2C0_0
