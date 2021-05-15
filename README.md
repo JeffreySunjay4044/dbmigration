@@ -9,7 +9,7 @@ e. debezium connect
 
 ## Setup
 ```shell script
-```Install Python```
+Install Python
 Required python version: 3.7
 Install python environment
 pipenv install

@@ -21,6 +21,9 @@ def create_table_query(db, ddl_query):
 def alter_table_query(db, ddl_query):
     return ddl_query
 
+def delete_table_query(db, ddl_query):
+    return ddl_query
+
 
 
 
