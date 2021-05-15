@@ -15,3 +15,7 @@ RUN mkdir $KAFKA_CONNECT_JDBC_DIR
 
 RUN cd $KAFKA_CONNECT_JDBC_DIR && \
     curl -sO https://packages.confluent.io/maven/io/confluent/kafka-connect-jdbc/$KAFKA_JDBC_VERSION/kafka-connect-jdbc-$KAFKA_JDBC_VERSION.jar
+
+HEALTHCHECK --interval=5s --timeout=3s CMD sh prerequisites.sh
+
+

@@ -19,16 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Adding ddl query converted and refactored code">
+    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="JDBC Sink Connector creation upon create table event - writeup">
+      <change afterPath="$PROJECT_DIR$/app/apiclient/sink-connector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/debezium-jdbc/prerequisites.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbmigration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbmigration.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/connector/stream_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connector/stream_connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/process/msg_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/msg_processor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/process/query/ddl_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/query/ddl_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/process/query/dml_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/query/dml_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/deploy_debezium_local.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/deploy_debezium_local.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debezium-jdbc/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/debezium-jdbc/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideas/handle_multi_topic.md" beforeDir="false" afterPath="$PROJECT_DIR$/ideas/handle_multi_topic.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +48,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/debezium-app" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/connector" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/debezium-app" />
       <recent name="$PROJECT_DIR$/scripts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/debezium-app" />
     </key>
   </component>
   <component name="RunManager">
@@ -175,7 +173,49 @@
       <option name="project" value="LOCAL" />
       <updated>1620959562455</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Adding app code for ddl changes and added dockerfile">
+      <created>1620961262384</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1620961262384</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added dml processor for alter table queries">
+      <created>1621013997614</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621013997615</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added make file for restart of container">
+      <created>1621014019650</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621014019650</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updating readme for alter table testing and using makefile">
+      <created>1621014397709</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1621014397709</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added ddl delete db to app functionalities">
+      <created>1621079667141</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1621079667141</updated>
+    </task>
+    <task id="LOCAL-00017" summary="JDBC Sink Connector creation upon create table event - writeup">
+      <created>1621080264638</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1621080264638</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -204,53 +244,63 @@
     <MESSAGE value="Adding requests.http for connector code and update README.md file" />
     <MESSAGE value="Deleting unnecessary file and add make file and scripts" />
     <MESSAGE value="Adding ddl query converted and refactored code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding ddl query converted and refactored code" />
+    <MESSAGE value="Adding app code for ddl changes and added dockerfile" />
+    <MESSAGE value="Added dml processor for alter table queries" />
+    <MESSAGE value="Added make file for restart of container" />
+    <MESSAGE value="Updating readme for alter table testing and using makefile" />
+    <MESSAGE value="Added ddl delete db to app functionalities" />
+    <MESSAGE value="JDBC Sink Connector creation upon create table event - writeup" />
+    <option name="LAST_COMMIT_MESSAGE" value="JDBC Sink Connector creation upon create table event - writeup" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620957734811">
+    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621096960336">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1620957734811" />
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1620960403685">
+    <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1621096960336" />
+    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1621080392975">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620960403685" />
-    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1620960403682">
+    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621080392975" />
+    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1621080392973">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1620960403682" />
-    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1620960403680">
+    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621080392973" />
+    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1621080392971">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1620960403680" />
-    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1620960403684">
+    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621080392971" />
+    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1621080392974">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1620960403684" />
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1620960403692">
+    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621080392974" />
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1621080392978">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1620960403692" />
-    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1620960403689">
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621080392978" />
+    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1621080392976">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1620960403689" />
-    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1620960403687">
+    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1621080392976" />
+    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1621080392976">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1620960403687" />
-    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1620960403690">
+    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1621080392976" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1621080392977">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1620960403690" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1621080392977" />
+    <state x="416" y="110" key="RollbackChangesDialog" timestamp="1621099656346">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="416" y="110" key="RollbackChangesDialog/0.0.1280.800@0.0.1280.800" timestamp="1621099656346" />
     <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1620817333499">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.800@0.0.1280.800" timestamp="1620817333499" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1620530140607">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1621102051414">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1620530140607" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621102051414" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,8 +11,10 @@ CREATE TABLE is not handled by the app and the event is missed. Moreover the tab
 by jdbc sink connector upon INSERT dml queries.
 
 What can be done ? 
-Call jdbc sink api which creates a new consumer to pull dml changes from the table . This api call is 
+Call jdbc sink api which creates a new consumer to pull dml changes from the table. This api call is 
 triggered upon the event in the kafka ddl topic.
 
 ```
+
+## Dev Analysis
 - [x] Call JDBC Sink Connector dynamically
