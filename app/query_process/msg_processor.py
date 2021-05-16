@@ -36,7 +36,8 @@ def process_message(msg_val, is_ddl):
             ddl_query_applied = msg_value_dict["ddl"]
             db = "inventory"
             if re.search('CREATE TABLE', ddl_query_applied, re.IGNORECASE):
-                ddl_db = msg_value_dict["database"]
+                print(f"msg_value_dict {msg_value_dict}")
+                ddl_db = msg_value_dict["databaseName"]
                 if ddl_db == db:
                     print(f"Expected create table scenario for db: {db}")
                     print(f"expected create table scenario : {ddl_query_applied}")
