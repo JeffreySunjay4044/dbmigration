@@ -2,6 +2,8 @@ import json
 import sys
 
 from connector import redshift_connection
+from api_client.dto import api_payload
+from api_client import sink_connector
 from query_process.query import dml_creator, ddl_creator
 import re
 
@@ -34,7 +36,18 @@ def process_message(msg_val, is_ddl):
             ddl_query_applied = msg_value_dict["ddl"]
             db = "inventory"
             if re.search('CREATE TABLE', ddl_query_applied, re.IGNORECASE):
-                print(f"expected create table scenario : {ddl_query_applied}")
+                ddl_db = msg_value_dict["database"]
+                if ddl_db == db:
+                    print(f"Expected create table scenario for db: {db}")
+                    print(f"expected create table scenario : {ddl_query_applied}")
+                    table_name, primary_key=ddl_creator.get_metadata(db, ddl_query_applied)
+                    json_payload = api_payload.sink_connector_payload(table_name,primary_key)
+                    connector_name = json_payload["name"]
+                    context_path = f"connectors/{connector_name}/config"
+                    sink_connector.api_call(context_path, json)
+                else:
+                    print(f"Not proceeding further as db is {ddl_db}")
+
                 # Ignoring these use cases currently as create runs on its own
                 # ddl_query = ddl_creator.create_table_query(database, ddl_query_applied)
                 # result = redshift_connection.push_to_redshift(database, ddl_query)

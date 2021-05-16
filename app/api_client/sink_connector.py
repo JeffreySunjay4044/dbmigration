@@ -13,8 +13,9 @@ class ApiConnectorError(Exception):
     def __repr__(self):
         return "%s(type=%s)" % (self.__class__.__name__, self.type)
 
+
 class ApiConnector(APIClient):
-    BASE_URL = 'http://connect:8083/connector/'
+    BASE_URL = 'http://connect:8083/'
 
     def _handle_response(self, response):
         r = super(ApiConnector, self)._handle_response(response)
@@ -25,7 +26,9 @@ class ApiConnector(APIClient):
 
         raise ApiConnectorError(has_error['type'], has_error['message'], response=response)
 
-def api_call(apiclient, contextpath, params):
+
+def api_call(contextpath, params):
+    apiclient = ApiConnector()
     result = apiclient.call(contextpath, params)
     print(f"Api call made for contextpath and params - {contextpath}, -{params} and the result is - {result}")
     return result

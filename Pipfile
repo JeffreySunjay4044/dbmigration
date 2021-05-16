@@ -9,6 +9,7 @@ singleton-decorator = "*"
 confluent-kafka = "*"
 postgres = "*"
 simple-ddl-parser = "*"
+apiclient = "*"
 
 [dev-packages]
 
