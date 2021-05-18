@@ -14,8 +14,8 @@ def get_metadata(db, ddl_query):
     statement = ddl_query[0:start_pos]
     # statement = 'CREATE TABLE "customers" (  "id" int(11) NOT NULL AUTO_INCREMENT,  "first_name" varchar(255) NOT NULL,  "last_name" varchar(255) NOT NULL,  "email" varchar(255) NOT NULL,  PRIMARY KEY ("id"), "email" varchar(255)) '
     result = DDLParser(statement).run(output_mode="mysql")
-    primary_key = ','.join(result[0]["primary_key"])
-    print(f"Result from ddl parsing : {primary_key}")
+    # primary_key = ','.join(result[0]["primary_key"])
+    # print(f"Result from ddl parsing : {primary_key}")
 
     case_insensitive = re.compile(re.escape('CREATE TABLE'), re.IGNORECASE)
     ddl_query = case_insensitive.sub('', ddl_query)
@@ -36,7 +36,7 @@ def get_metadata(db, ddl_query):
         increment += 1
     print(f"Expected string and start-pos and end-pos {ddl_query},  {start_pos},  {end_pos}")
 
-    return ddl_query[start_pos: end_pos], primary_key
+    return ddl_query[start_pos: end_pos], "id"
 
     # case_insensitive_auto_increment = re.compile(re.escape('AUTO_INCREMENT'), re.IGNORECASE)
     # ddl_query = case_insensitive_auto_increment.sub('', ddl_query)
