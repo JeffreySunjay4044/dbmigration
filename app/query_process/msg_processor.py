@@ -41,11 +41,12 @@ def process_message(msg_val, is_ddl):
                 if ddl_db == db:
                     print(f"Expected create table scenario for db: {db}")
                     print(f"expected create table scenario : {ddl_query_applied}")
-                    table_name, primary_key=ddl_creator.get_metadata(db, ddl_query_applied)
-                    json_payload = api_payload.sink_connector_payload(table_name,primary_key)
-                    connector_name = json_payload["name"]
-                    context_path = f"connectors/{connector_name}/config"
-                    sink_connector.api_call(context_path, json)
+                    ## Commenting these lines for local testing.
+                    # table_name, primary_key=ddl_creator.get_metadata(db, ddl_query_applied)
+                    # json_payload = api_payload.sink_connector_payload(table_name,primary_key)
+                    # connector_name = json_payload["name"]
+                    # context_path = f"connectors/{connector_name}/config"
+                    # sink_connector.api_call(context_path, json)
                 else:
                     print(f"Not proceeding further as db is {ddl_db}")
 

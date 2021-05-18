@@ -4,24 +4,21 @@
 PUT http://localhost:8083/connectors/tablename-connector/config
 Content-Type: application/json
 
-{
-    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
-    "tasks.max": "1",
-    "database.hostname": "mysql",
+ { "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+  "tasks.max": "1",
+   "database.hostname": "mysql",
     "database.port": "3306",
     "database.user": "debezium",
-    "database.server.id": "184054",
-    "database.password": "dbz",
-    "database.server.name": "mysql",
-    "database.include.list": "inventory",
-    "database.history.kafka.bootstrap.servers": "kafka:9092",
-    "database.history.kafka.topic": "dbhistory.inventory",
-    "name": "order-connector",
-    "transforms": "route",
-    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
-    "transforms.route.regex": "([^.]+)\\.([^.]+)\\.([^.]+)",
-    "transforms.route.replacement": "$3"
-}
+     "database.server.id": "184054",
+      "database.password": "dbz",
+       "database.server.name": "mysql",
+        "database.include.list": "inventory",
+         "database.history.kafka.bootstrap.servers": "kafka:9092",
+          "database.history.kafka.topic": "dbhistory.inventory",
+          "name":"product-connector-test","transforms": "route",
+"transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+"transforms.route.regex": "([^.]+)\\.([^.]+)\\.([^.]+)",
+"transforms.route.replacement": "$3" }
 
 
 ### For adding a connector rule which uses kafka as a source and push data to sink postgresql topic
@@ -29,16 +26,19 @@ PUT http://localhost:8083/connectors/jdbc-sink-orders/config
 Content-Type: application/json
 
 {
-    "name": "jdbc-sink-orders",
-    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
-    "tasks.max": "1",
-    "topics": "orders",
-    "connection.url": "jdbc:postgresql://redshift:5432/inventory?user=postgres&password=debezium",
-    "transforms": "unwrap",
-    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
-    "transforms.unwrap.drop.tombstones": "false",
-    "auto.create": "true",
-    "insert.mode": "upsert",
-    "pk.fields": "order_number",
-    "pk.mode": "record_value"
+        "name": "jdbc-sink-products-test",
+        "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+        "tasks.max": "1",
+        "topics": "products",
+        "connection.url": "jdbc:postgresql://redshift:5432/inventory?user=postgres&password=debezium",
+    	"transforms": "unwrap",
+    	"transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    	"transforms.unwrap.drop.tombstones": "false",
+    	"transforms.unwrap.delete.handling.mode":"none",
+        "auto.create": "true",
+        "auto.evolve": "true",
+        "insert.mode": "upsert",
+        "pk.fields": "id",
+        "pk.mode": "record_key",
+        "delete.enabled": "true"
 }
