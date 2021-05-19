@@ -44,6 +44,21 @@ make purge_restart_docker container_name={container_name} : refer from docker-co
 
 ```
 
+### Supported DDL Operations
+```
+ALTER TABLE : 
+1. Make sure ddlconsumerinventory container is running and listening to dbhistory.inventory. This is the topic 
+that houses all ddl CDC. 
+2. For testing alter, login to mysql instance and perform ALTER Table add or drop column and you should be
+able to see the changes in redshift
+
+DROP TABLE:
+1. For testing out drop table scenario, Please call the request/http 3rd api.
+2. Login to mysql and drop a table and you will find the changes reflected in redshift.
+
+
+```
+
 
 ## Architecture diagram
 ```
