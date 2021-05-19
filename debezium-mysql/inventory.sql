@@ -104,3 +104,11 @@ VALUES (default, '2016-01-16', 1001, 1, 102),
        (default, '2016-02-19', 1002, 2, 106),
        (default, '2016-02-21', 1003, 1, 107);
 
+
+--## use this table for drop commands
+CREATE TABLE IF NOT EXISTS mercatotest (
+  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE KEY
+)

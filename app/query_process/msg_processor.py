@@ -1,5 +1,4 @@
 import json
-import sys
 
 from connector import redshift_connection
 from api_client.dto import api_payload
@@ -9,30 +8,11 @@ import re
 
 
 def process_message(msg_val, is_ddl):
-    sys.stderr.write('%% %s [%d] at offset %d with key %s:\n' %
-                     (msg_val.topic(), msg_val.partition(), msg_val.offset(),
-                      str(msg_val.key())))
-    print(f"msg.value() is: {msg_val.value()}")
     result = {}
     if msg_val.value() is not None:
         msg_value_dict = json.loads(msg_val.value().decode('utf-8'))
         print(f"msg_value_str is: {msg_value_dict}")
         if is_ddl is not None:
-
-            # msg format is
-            # {
-            #   "source" : {
-            #     "server" : "mysql"
-            #   },
-            #   "position" : {
-            #     "ts_sec" : 1620903794,
-            #     "file" : "mysql-bin.000072",
-            #     "pos" : 360,
-            #     "server_id" : 223344
-            #   },
-            #   "databaseName" : "inventory",
-            #   "ddl" : "ALTER TABLE orders ADD COLUMN first_referrer varchar(100)"
-            # }
             ddl_query_applied = msg_value_dict["ddl"]
             db = "inventory"
             if re.search('CREATE TABLE', ddl_query_applied, re.IGNORECASE):
@@ -42,29 +22,24 @@ def process_message(msg_val, is_ddl):
                     print(f"Expected create table scenario for db: {db}")
                     print(f"expected create table scenario : {ddl_query_applied}")
                     ## Commenting these lines for local testing.
-                    # table_name, primary_key=ddl_creator.get_metadata(db, ddl_query_applied)
-                    # json_payload = api_payload.sink_connector_payload(table_name,primary_key)
-                    # connector_name = json_payload["name"]
-                    # context_path = f"connectors/{connector_name}/config"
-                    # sink_connector.api_call(context_path, json)
+                    table_name, primary_key=ddl_creator.get_metadata(db, ddl_query_applied)
+                    json_payload = api_payload.sink_connector_payload(table_name,primary_key)
+                    connector_name = json_payload["name"]
+                    context_path = f"connectors/{connector_name}/config"
+                    sink_connector.api_call(context_path, json)
                 else:
                     print(f"Not proceeding further as db is {ddl_db}")
 
-                # Ignoring these use cases currently as create runs on its own
-                # ddl_query = ddl_creator.create_table_query(database, ddl_query_applied)
-                # result = redshift_connection.push_to_redshift(database, ddl_query)
             elif re.search("ALTER TABLE ", ddl_query_applied, re.IGNORECASE):
                 print(f"expected alter table scenario : {ddl_query_applied}")
 
                 if re.search("REFERENCES", ddl_query_applied, re.IGNORECASE):
                     print(f"expected alter table scenario other than column ones :  {ddl_query_applied}")
-## Leaving this comment here. Make changes here for handling alter table commands other than drop or create columns
-
                 else:
                     print(f"Expected scenario with alter table drop or add columns : {ddl_query_applied}")
                     ddl_query = ddl_creator.alter_table_query(db, ddl_query_applied)
                     result = redshift_connection.push_to_redshift(db, ddl_query, False)
-            elif re.search("DELETE TABLE ", ddl_query_applied, re.IGNORECASE):
+            elif re.search("DROP TABLE", ddl_query_applied, re.IGNORECASE):
                 print(f"Exepected scenario : {ddl_query_applied}")
                 ddl_query = ddl_creator.delete_table_query(db, ddl_query_applied)
                 result = redshift_connection.push_to_redshift(db, ddl_query, False)
