@@ -38,7 +38,7 @@ services:
      - MYSQL_DATABASE=inventory
      - MYSQL_PASSWORD=dbz
     volumes:
-      - mysql-db:/var/lib/mysql
+      - mysqldb:/var/lib/mysql
   connect:
     build:
       context: debezium-jdbc
@@ -93,7 +93,7 @@ services:
       - GROUP_ID=mercato-test-2
       - POSTGRES_PASSWORD=debezium
 volumes:
-  mysql-db:
+  mysqldb:
   mysql-connector:
   ssh-keys:
   redshift:

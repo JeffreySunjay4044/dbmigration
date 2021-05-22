@@ -19,18 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Adding prerequisites.sh and apiclient">
-      <change afterPath="$PROJECT_DIR$/app/api_client/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api_client/dto/api_payload.py" afterDir="false" />
+    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Commenting unfinished business create table">
+      <change afterPath="$PROJECT_DIR$/app/query_process/metadata/table_pk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/query_process/metadata/type_metadata.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/table_pk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/type_metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/apiclient/sink-connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api_client/sink_connector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/connector/stream_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connector/stream_connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/query_process/msg_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/msg_processor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/query_process/query/ddl_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/query/ddl_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debezium-jdbc/prerequisites.sh" beforeDir="false" afterPath="$PROJECT_DIR$/debezium-jdbc/prerequisites.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debezium-mysql/inventory.sql" beforeDir="false" afterPath="$PROJECT_DIR$/debezium-mysql/inventory.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,16 +53,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/apiclient" />
-      <recent name="$PROJECT_DIR$/debezium-app" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/query_process/metadata" />
       <recent name="$PROJECT_DIR$/app/connector" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/debezium-app" />
-      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/apiclient" />
+      <recent name="$PROJECT_DIR$/debezium-app" />
     </key>
   </component>
   <component name="RunManager">
@@ -228,7 +228,56 @@
       <option name="project" value="LOCAL" />
       <updated>1621102089936</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added support for multiple topics Refer ideas/handle multi topic.md">
+      <created>1621164343408</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1621164343408</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added support for multiple topics Refer ideas/handle multi topic.md">
+      <created>1621178954360</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1621178954360</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added support for multiple topics Refer ideas/handle multi topic.md">
+      <created>1621358111524</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1621358111524</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Updated requests.http and commented create table scenario">
+      <created>1621359594166</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1621359594166</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Updating processor and requests.http for handling drop scenario">
+      <created>1621399942686</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1621399942687</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Updating README.md for alter and drop table scenarios">
+      <created>1621400290216</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1621400290216</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Commenting unfinished business create table">
+      <created>1621400379635</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1621400379635</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -264,53 +313,58 @@
     <MESSAGE value="Added ddl delete db to app functionalities" />
     <MESSAGE value="JDBC Sink Connector creation upon create table event - writeup" />
     <MESSAGE value="Adding prerequisites.sh and apiclient" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding prerequisites.sh and apiclient" />
+    <MESSAGE value="Added support for multiple topics Refer ideas/handle multi topic.md" />
+    <MESSAGE value="Updated requests.http and commented create table scenario" />
+    <MESSAGE value="Updating processor and requests.http for handling drop scenario" />
+    <MESSAGE value="Updating README.md for alter and drop table scenarios" />
+    <MESSAGE value="Commenting unfinished business create table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commenting unfinished business create table" />
   </component>
   <component name="WindowStateProjectService">
     <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621153144573">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="372" y="211" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1621153144573" />
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom" timestamp="1621163455368">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1621681214103">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621163455368" />
-    <state width="1238" height="264" key="GridCell.Tab.0.center" timestamp="1621163455367">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621681214103" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1621681214100">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621163455367" />
-    <state width="1238" height="264" key="GridCell.Tab.0.left" timestamp="1621163455366">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621681214100" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1621681214098">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621163455366" />
-    <state width="1238" height="264" key="GridCell.Tab.0.right" timestamp="1621163455368">
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621681214098" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1621681214101">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621163455368" />
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1621163455371">
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621681214101" />
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom" timestamp="1621226116421">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621163455371" />
-    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1621163455370">
+    <state width="1238" height="264" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621226116421" />
+    <state width="1238" height="264" key="GridCell.Tab.1.center" timestamp="1621226116420">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1621163455370" />
-    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1621163455369">
+    <state width="1238" height="264" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1621226116420" />
+    <state width="1238" height="264" key="GridCell.Tab.1.left" timestamp="1621226116419">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1621163455369" />
-    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1621163455370">
+    <state width="1238" height="264" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1621226116419" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right" timestamp="1621226116421">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1621163455370" />
+    <state width="1238" height="264" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1621226116421" />
     <state x="416" y="110" key="RollbackChangesDialog" timestamp="1621099656346">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="416" y="110" key="RollbackChangesDialog/0.0.1280.800@0.0.1280.800" timestamp="1621099656346" />
-    <state width="640" height="400" key="XDebugger.FullValuePopup" timestamp="1621163433966">
+    <state width="640" height="400" key="XDebugger.FullValuePopup" timestamp="1621170420401">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="640" height="400" key="XDebugger.FullValuePopup/0.0.1280.800@0.0.1280.800" timestamp="1621163433966" />
+    <state width="640" height="400" key="XDebugger.FullValuePopup/0.0.1280.800@0.0.1280.800" timestamp="1621170420401" />
     <state width="640" height="400" key="XDebugger.FullValuePopup/0.23.1280.709@0.23.1280.709" timestamp="1621163201789" />
     <state x="205" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1620817333499">
       <screen x="0" y="0" width="1280" height="800" />
@@ -330,29 +384,29 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/query_process/msg_processor.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/query_process/msg_processor.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/connector/stream_connection.py</url>
           <line>47</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/main.py</url>
-          <line>5</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/app/query_process/msg_processor.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/query_process/msg_processor.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/app/main.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/main.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/main.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

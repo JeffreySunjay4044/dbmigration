@@ -22,7 +22,7 @@ def build_consumer() -> Dict:
         'default.topic.config': {'auto.offset.reset': 'smallest'},
     }
 
-def start_consumer():
+def start_consumer() -> None:
     # conf = {
     #     'bootstrap.servers': 'localhost:9092',
     #     'group.id': "mercato_test",

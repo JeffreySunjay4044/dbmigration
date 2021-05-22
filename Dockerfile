@@ -10,6 +10,7 @@ FROM python:3.7-slim
 
 COPY Pipfile ./Pipfile
 COPY Pipfile.lock ./Pipfile.lock
+COPY type_metadata.json ./type_metadata.json
 
 RUN pip3 install pipenv
 RUN pip install --upgrade pip

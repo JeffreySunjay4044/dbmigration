@@ -1,0 +1,18 @@
+{
+  "DOUBLE": "DOUBLE PRECISION",
+  "FLOAT": "REAL",
+  "DATETIME": "TIMESTAMP",
+  "LONGTEXT": "TEXT",
+  "BLOB": "BYTEA",
+  "AUTO_INCREMENT =": {
+    "replace_with_prefix": "RESTART WITH ",
+    "should_generate": true
+  },
+  "AUTO_INCREMENT=": {
+    "replace_with_prefix": "RESTART WITH ",
+    "should_generate": true
+  },
+  "AUTO_INCREMENT": {
+    "replace_with_prefix": "SERIAL"
+  }
+}

@@ -1,9 +1,14 @@
 from connector import stream_connection
 from simple_ddl_parser import DDLParser
+from query_process.query import ddl_creator
 
 if __name__ == '__main__':
-    stream_connection.start_consumer()
-    # statement = 'CREATE TABLE `addresses` (`id` int(11) NOT NULL AUTO_INCREMENT,`customer_id` int(11) NOT NULL,`street` varchar(255) NOT NULL,`city` varchar(255) NOT NULL,`state` varchar(255) NOT NULL,`zip` varchar(255) NOT NULL,PRIMARY KEY (`id`),KEY `address_customer` (`customer_id`),CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1';
+    # stream_connection.start_consumer()
+
+    statement = 'ALTER TABLE products AUTO_INCREMENT=202'
+    statement = ddl_creator.alter_table_query("inventory", statement)
+
+
     # statement = statement.replace('`', '"')
     # statement = statement.replace('\n', '')
     # statement = statement.replace('AUTO INCREMENT', '')
@@ -23,5 +28,5 @@ if __name__ == '__main__':
     # # statement = 'CREATE TABLE "customers" (  "id" int(11) NOT NULL AUTO_INCREMENT,  "first_name" varchar(255) NOT NULL,  "last_name" varchar(255) NOT NULL,  "email" varchar(255) NOT NULL,  PRIMARY KEY ("id"), "email" varchar(255)) '
     # result = DDLParser(statement).run(output_mode="mysql")
     # primary_key = ','.join(result[0]["primary_key"])
-    # print(f"Result from ddl parsing : {primary_key}")
+    print(f"Result from ddl parsing : {statement}")
 

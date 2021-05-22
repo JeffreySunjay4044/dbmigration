@@ -1,6 +1,7 @@
 import re
 
 from simple_ddl_parser import DDLParser
+from query_process.metadata import type_metadata
 
 
 def get_metadata(db, ddl_query):
@@ -33,8 +34,8 @@ def get_metadata(db, ddl_query):
                 word_started = True
         increment += 1
     print(f"Expected string and start-pos and end-pos {ddl_query},  {start_pos},  {end_pos}")
-
-    return ddl_query[start_pos: end_pos], "id"
+    table_name = ddl_query[start_pos:end_pos]
+    return table_name, "id"
 
     # case_insensitive_auto_increment = re.compile(re.escape('AUTO_INCREMENT'), re.IGNORECASE)
     # ddl_query = case_insensitive_auto_increment.sub('', ddl_query)
@@ -52,6 +53,7 @@ def get_metadata(db, ddl_query):
 
 
 def alter_table_query(db, ddl_query):
+    ddl_query = type_metadata.convert_query(ddl_query, "inventory", "products")
     return ddl_query
 
 

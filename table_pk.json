@@ -1,0 +1,10 @@
+{
+  "products": {
+    "primary_key": "id",
+    "serial": true
+  },
+  "products_on_hand": {
+    "primary_key": "id",
+    "serial": true
+  }
+}
