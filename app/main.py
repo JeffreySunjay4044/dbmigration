@@ -5,7 +5,7 @@ from query_process.query import ddl_creator
 if __name__ == '__main__':
     # stream_connection.start_consumer()
 
-    statement = 'ALTER TABLE products AUTO_INCREMENT=202'
+    statement = 'ALTER TABLE products ALTER COLUMN ADDRESS BLOB'
     statement = ddl_creator.alter_table_query("inventory", statement)
 
 

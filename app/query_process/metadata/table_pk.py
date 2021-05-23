@@ -10,5 +10,5 @@ def get_seq_table(table_name, db_name):
         seq_id += db_name + "_" + table_name;
         table_pk_config = table_pk[table_name]
         if table_pk_config["serial"] is True:
-            seq_id += "_" + table_pk_config["primary_key"]
+            seq_id += "_" + table_pk_config["primary_key"]+" "
     return seq_id

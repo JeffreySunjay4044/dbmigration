@@ -38,7 +38,8 @@ def process_message(msg_val, is_ddl):
                 else:
                     print(f"Expected scenario with alter table drop or add columns : {ddl_query_applied}")
                     ddl_query = ddl_creator.alter_table_query(db, ddl_query_applied)
-                    result = redshift_connection.push_to_redshift(db, ddl_query, False)
+                    if ddl_query is not None:
+                        result = redshift_connection.push_to_redshift(db, ddl_query, False)
             elif re.search("DROP TABLE", ddl_query_applied, re.IGNORECASE):
                 print(f"Exepected scenario : {ddl_query_applied}")
                 ddl_query = ddl_creator.delete_table_query(db, ddl_query_applied)
