@@ -19,18 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="Commenting unfinished business create table">
-      <change afterPath="$PROJECT_DIR$/app/query_process/metadata/table_pk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/query_process/metadata/type_metadata.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table_pk.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/type_metadata.json" afterDir="false" />
+    <list default="true" id="03b7e7ff-f1e8-4e93-8632-384f5a797e4b" name="Default Changelist" comment="ALTER table handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/connector/stream_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connector/stream_connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/query_process/query/ddl_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/query_process/query/ddl_creator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debezium-mysql/inventory.sql" beforeDir="false" afterPath="$PROJECT_DIR$/debezium-mysql/inventory.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,18 +385,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/main.py</url>
-          <line>13</line>
+          <line>30</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/main.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/main.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
