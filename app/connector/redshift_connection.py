@@ -1,4 +1,5 @@
 import os
+from aifc import Error
 from typing import NamedTuple, Optional
 import redshift_connector
 import psycopg2
@@ -47,24 +48,27 @@ class RedshiftConnection:
 
 
 def push_to_redshift(db, sql_query, is_result_needed):
-    conn_info = build_conn_info(
-        host='redshift',
-        database=db,
-        user='postgres',
-        password='debezium'
-    )
-    print(f"conn info is {conn_info}")
-    connection = RedshiftConnection(conn_info).get_client()
-    cursor: redshift_connector.Cursor = connection.cursor()
-    cursor.execute(sql_query)
-    if is_result_needed is not None:
-        if is_result_needed is True:
-            result: tuple = cursor.fetchall()
-            print(f"Result after insert {result}")
-            return result
-        else:
-            connection.commit()
-
+    try:
+        conn_info = build_conn_info(
+            host='redshift',
+            database=db,
+            user='postgres',
+            password='debezium'
+        )
+        print(f"conn info is {conn_info}")
+        connection = RedshiftConnection(conn_info).get_client()
+        cursor: redshift_connector.Cursor = connection.cursor()
+        cursor.execute(sql_query)
+        if is_result_needed is not None:
+            if is_result_needed is True:
+                result: tuple = cursor.fetchall()
+                print(f"Result after insert {result}")
+                return result
+            else:
+                connection.commit()
+    except Exception as err:
+        print(f"Exception recorded. Passing the message. Pasting the ddl for reference : {sql_query} and the db is {db}");
+        print(f"Error faced : {err}")
 
 def describe_table(db, table_name, is_result_needed):
     conn_info = build_conn_info(

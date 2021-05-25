@@ -38,7 +38,7 @@ services:
      - MYSQL_DATABASE=inventory
      - MYSQL_PASSWORD=dbz
     volumes:
-      - mysqldb:/var/lib/mysql
+      - mysql-db-new-test:/var/lib/mysql
   connect:
     build:
       context: debezium-jdbc
@@ -49,7 +49,7 @@ services:
       - mysql
       - kafka
     volumes:
-     - mysql-connector:/kafka/connect/kafka-connect-mysql/
+     - mysql-connector-new-test:/kafka/connect/kafka-connect-mysql/
     links:
      - kafka
      - mysql
@@ -68,7 +68,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - redshift:/usr/local/psql/data
+      - redshift-db-new-test:/usr/local/psql/data
     links:
       - kafka
       - mysql
@@ -93,7 +93,7 @@ services:
       - GROUP_ID=mercato-test-2
       - POSTGRES_PASSWORD=debezium
 volumes:
-  mysqldb:
-  mysql-connector:
+  mysql-db-new-test:
+  mysql-connector-new-test:
   ssh-keys:
-  redshift:
+  redshift-db-new-test:

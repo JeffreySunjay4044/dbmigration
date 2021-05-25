@@ -1,4 +1,5 @@
 ## Handling datatype column changes Exception cases
+
 Case 1 : AutoIncrement 
 This information is not needed at the postgres side. Reason being the data from mysql 
 will be blindly inserted in to postgres including the column which has autoincrement feature 
