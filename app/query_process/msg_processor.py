@@ -1,7 +1,7 @@
 import json
 
 from connector import redshift_connection
-from query_process.query import dml_creator, ddl_creator
+from query_process.query import ddl_creator
 import re
 
 
@@ -27,37 +27,4 @@ def process_message(msg_val, is_ddl):
                 result = redshift_connection.push_to_redshift(db, ddl_query, False)
             else:
                 print(f"Encountered unexpected scenario : {ddl_query_applied}")
-
-        elif is_ddl is None:
-            payload = msg_value_dict["payload"]
-            if type(payload) is not dict:
-                payload = json.loads(payload)
-
-            if payload and payload["source"] is not None:
-
-                source = payload["source"]
-                if type(source) is not dict:
-                    source = json.loads(source)
-                db = source["db"]
-                table = source["table"]
-                before = payload["before"]
-                if before is not None:
-                    if type(before) is not dict:
-                        before = json.loads(before)
-                after = payload["after"]
-                if after is not None:
-                    if type(after) is not dict:
-                        after = json.loads(after)
-                print(f"before_value is {before} and after_value is {after}")
-                if before is None:
-                    if after is not None:
-                        sql_query = dml_creator.insert_record_query(after, db, table)
-                        result = redshift_connection.push_to_redshift(db, sql_query)
-                elif after is None:
-                    if before is not None:
-                        sql_query = dml_creator.delete_record_query(after, db, table)
-                        result = redshift_connection.push_to_redshift(db, sql_query)
-                else:
-                    sql_query = dml_creator.update_record_query(after, db, table)
-                    result = redshift_connection.push_to_redshift(db, sql_query)
     return result

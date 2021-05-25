@@ -48,7 +48,7 @@ class RedshiftConnection:
 
 def push_to_redshift(db, sql_query, is_result_needed):
     conn_info = build_conn_info(
-        host='localhost',
+        host='redshift',
         database=db,
         user='postgres',
         password='debezium'
@@ -68,7 +68,7 @@ def push_to_redshift(db, sql_query, is_result_needed):
 
 def describe_table(db, table_name, is_result_needed):
     conn_info = build_conn_info(
-        host='localhost',
+        host='redshift',
         database=db,
         user='postgres',
         password='debezium'

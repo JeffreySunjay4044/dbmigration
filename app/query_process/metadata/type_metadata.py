@@ -11,23 +11,25 @@ def create_doubly_linked_dict() -> Dict:
 
 
 def add_keywords(ddl_query):
-    res = re.search('COLUMN', ddl_query, re.IGNORECASE)
-    end = res.end()
-    word_started = False
-    column_end_pos = 0
-    column_start_pos = 0
-    for i in range(end, len(ddl_query)):
-        char = ddl_query[i]
-        if word_started is True:
-            if char is " ":
-                column_end_pos = i
-                break
-        else:
-            if char is not " ":
-                word_started = True
-                column_start_pos = i
-    ddl_query = ddl_query[:column_end_pos] + " type" + ddl_query[column_end_pos:]
-    print(f"Column start pos , endpos, ddl, {column_start_pos}, {column_start_pos}, {type(ddl_query)}")
+    is_alter_column = re.search('ALTER COLUMN', ddl_query, re.IGNORECASE)
+    if is_alter_column is not None:
+        res = re.search('COLUMN', ddl_query, re.IGNORECASE)
+        end = res.end()
+        word_started = False
+        column_end_pos = 0
+        column_start_pos = 0
+        for i in range(end, len(ddl_query)):
+            char = ddl_query[i]
+            if word_started is True:
+                if char is " ":
+                    column_end_pos = i
+                    break
+            else:
+                if char is not " ":
+                    word_started = True
+                    column_start_pos = i
+        ddl_query = ddl_query[:column_end_pos] + " type" + ddl_query[column_end_pos:]
+        print(f"Column start pos , endpos, ddl, {column_start_pos}, {column_start_pos}, {type(ddl_query)}")
     return ddl_query
 
 
