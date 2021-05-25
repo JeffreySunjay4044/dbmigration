@@ -13,7 +13,6 @@ def get_metadata(db, ddl_query):
     ddl_query = ddl_query.replace('DEFAULT NULL', '')
     start_pos = ddl_query.find("ENGINE=InnoDB")
     statement = ddl_query[0:start_pos]
-    # statement = 'CREATE TABLE "customers" (  "id" int(11) NOT NULL AUTO_INCREMENT,  "first_name" varchar(255) NOT NULL,  "last_name" varchar(255) NOT NULL,  "email" varchar(255) NOT NULL,  PRIMARY KEY ("id"), "email" varchar(255)) '
     result = DDLParser(statement).run(output_mode="mysql")
 
     case_insensitive = re.compile(re.escape('CREATE TABLE'), re.IGNORECASE)
@@ -37,24 +36,9 @@ def get_metadata(db, ddl_query):
     table_name = ddl_query[start_pos:end_pos]
     return table_name, "id"
 
-    # case_insensitive_auto_increment = re.compile(re.escape('AUTO_INCREMENT'), re.IGNORECASE)
-    # ddl_query = case_insensitive_auto_increment.sub('', ddl_query)
-    # rm_unnecessary = re.compile(re.escape('=110 DEFAULT CHARSET=latin1'), re.IGNORECASE)
-    # ddl_query = rm_unnecessary.sub('', ddl_query)
-    # rm_engine = re.compile(re.escape('ENGINE=InnoDB'), re.IGNORECASE)
-    # ddl_query = rm_engine.sub('', ddl_query)
-    # table_separation = ddl_query.split('(')
-    # table_name = table_separation[0]
-    # ddl_query = ddl_query.strip('\n')
-    # column_separator = ddl_query.split(',')
-    # # for column in column_separator:
-    # #     for char in column:
-    # #         if char == "'"
-
 
 def alter_table_query(db, ddl_query):
-    ddl_query = type_metadata.convert_query(ddl_query, "inventory", "products")
-    return ddl_query
+    return type_metadata.convert_query(ddl_query)
 
 
 def delete_table_query(db, ddl_query):

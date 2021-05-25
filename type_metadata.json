@@ -3,20 +3,25 @@
   "FLOAT": "REAL",
   "DATETIME": "TIMESTAMP",
   "LONGTEXT": "TEXT",
+  "MODIFY COLUMN": "ALTER COLUMN",
   "BLOB": {
     "replace_with_prefix": "BYTEA",
-    "should_generate": true
+    "should_generate": true,
+    "type_cast": true
   },
   "AUTO_INCREMENT =": {
     "replace_with_prefix": "RESTART WITH",
-    "should_generate": true
+    "should_generate": true,
+    "type_cast": true
   },
   "AUTO_INCREMENT=": {
     "replace_with_prefix": "RESTART WITH",
-    "should_generate": true
+    "should_generate": true,
+    "type_cast": true
   },
   "AUTO_INCREMENT": {
     "replace_with_prefix": "",
-    "should_generate": false
+    "should_generate": false,
+    "type_cast": true
   }
 }

@@ -1,8 +1,6 @@
 import json
 
 from connector import redshift_connection
-from api_client.dto import api_payload
-from api_client import sink_connector
 from query_process.query import dml_creator, ddl_creator
 import re
 
@@ -16,32 +14,15 @@ def process_message(msg_val, is_ddl):
             ddl_query_applied = msg_value_dict["ddl"]
             db = "inventory"
             if re.search('CREATE TABLE', ddl_query_applied, re.IGNORECASE):
-                print(f"msg_value_dict {msg_value_dict}")
-                ddl_db = msg_value_dict["databaseName"]
-                if ddl_db == db:
-                    print(f"Expected create table scenario for db: {db}")
-                    print(f"expected create table scenario : {ddl_query_applied}")
-                    ## Commenting these lines for local testing.
-                    # table_name, primary_key=ddl_creator.get_metadata(db, ddl_query_applied)
-                    # json_payload = api_payload.sink_connector_payload(table_name,primary_key)
-                    # connector_name = json_payload["name"]
-                    # context_path = f"connectors/{connector_name}/config"
-                    # sink_connector.api_call(context_path, json)
-                else:
-                    print(f"Not proceeding further as db is {ddl_db}")
-
+                print(f"Not handling this feature here . Handled in dml")
             elif re.search("ALTER TABLE ", ddl_query_applied, re.IGNORECASE):
-                print(f"expected alter table scenario : {ddl_query_applied}")
-
                 if re.search("REFERENCES", ddl_query_applied, re.IGNORECASE):
                     print(f"expected alter table scenario other than column ones :  {ddl_query_applied}")
                 else:
-                    print(f"Expected scenario with alter table drop or add columns : {ddl_query_applied}")
                     ddl_query = ddl_creator.alter_table_query(db, ddl_query_applied)
                     if ddl_query is not None:
                         result = redshift_connection.push_to_redshift(db, ddl_query, False)
             elif re.search("DROP TABLE", ddl_query_applied, re.IGNORECASE):
-                print(f"Exepected scenario : {ddl_query_applied}")
                 ddl_query = ddl_creator.delete_table_query(db, ddl_query_applied)
                 result = redshift_connection.push_to_redshift(db, ddl_query, False)
             else:
