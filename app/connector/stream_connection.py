@@ -16,7 +16,7 @@ def build_consumer() -> Dict:
 
 
 def start_consumer() -> None:
-    topics = ["dbhistory.mercatoaltertest"]
+    topics = ["dbhistory.inventory"]
     is_ddl = True
     c = Consumer(build_consumer())
     c.subscribe(topics)

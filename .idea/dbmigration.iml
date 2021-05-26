@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/tf" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (dbmigration)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (dbmigration)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

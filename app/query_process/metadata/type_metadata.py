@@ -12,7 +12,8 @@ def create_doubly_linked_dict() -> Dict:
 
 def add_keywords(ddl_query):
     is_alter_column = re.search('ALTER COLUMN', ddl_query, re.IGNORECASE)
-    if is_alter_column is not None:
+    is_modify_column = re.search('MODIFY COLUMN', ddl_query, re.IGNORECASE)
+    if is_alter_column is not None or is_modify_column is not None:
         res = re.search('COLUMN', ddl_query, re.IGNORECASE)
         end = res.end()
         word_started = False
@@ -53,4 +54,5 @@ def convert_query(ddl_query) -> None:
             case_insensitive = re.compile(re.escape(datatype), re.IGNORECASE)
             ddl_query = case_insensitive.sub(replacement, ddl_query)
             print(f"the changed datatype query is {ddl_query}")
+    print(f"the final answer datatype query is {ddl_query}")
     return ddl_query
