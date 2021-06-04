@@ -92,6 +92,20 @@ services:
       - BOOTSTRAP_SERVER=kafka:9092
       - GROUP_ID=mercato-test-2
       - POSTGRES_PASSWORD=debezium
+  portforwarding:
+    build:
+      context: port-forwarding
+    container_name: portforwarding
+    depends_on:
+      - mysql
+      - kafka
+      - redshift
+    ports:
+      - 9100:9100
+    links:
+      - kafka
+      - mysql
+      - redshift
 volumes:
   mysql-db-new-test:
   mysql-connector-new-test:
