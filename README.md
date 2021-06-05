@@ -80,3 +80,7 @@ https://debezium.io/documentation/reference/1.5/tutorial.html
 ##Docker commands
 Kafka consumer terminal commands:
 ./bin/kafka-console-consumer.sh --topic mysql.inventory.products --bootstrap-server kafka:9092 --from-beginning
+
+
+##Important commands
+chmod 600 pemfiles

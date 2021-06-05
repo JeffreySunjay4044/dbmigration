@@ -1,3 +1,4 @@
 FROM debian
-COPY ./port_forwarding.sh /opt/scripts/port_forwarding.sh
-ENTRYPOINT [ "opt/scripts/port_forwarding.sh" ]
+COPY ../debezium-postgres/port_forwarding.sh /opt/scripts/port_forwarding.sh
+RUN ["chmod", "+x", "/opt/scripts/port_forwarding.sh"]
+
