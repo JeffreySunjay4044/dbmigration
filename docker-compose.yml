@@ -106,6 +106,16 @@ services:
       - kafka
       - mysql
       - redshift
+    environment:
+      - ssh_private_key=location
+      - ssh_username=username
+      - ssh_password=password
+      - remote_bind_address=remote_addresss
+      - host_path=host_path
+      - database=database
+      - user=user
+      - password=password
+      - host=host
 volumes:
   mysql-db-new-test:
   mysql-connector-new-test:
