@@ -33,6 +33,12 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+	archiveBaseName.set("kotlin-gateway")
+}
+
+
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
